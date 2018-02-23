@@ -1,5 +1,5 @@
 <div class="container">
-	<h1 class="header-search">Search Customers</h1>
+	<h1 class="header-search">Filter Customers</h1>
 	<%= form_tag(search_customers_path, method: :get, class: 'form-search') do %>
 		<div class="form-inline">
 			<%= text_field_tag :query, params[:query], placeholder: 'Search for a name here', class: 'input-search' %>
