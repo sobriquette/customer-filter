@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CustomersControllerTest < ActionDispatch::IntegrationTest
-	setup do 
+	 setup do 
 		@customer = customers(:one)
 	end
 
@@ -24,4 +24,10 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
 		assert_response :success
 	end
 
+	test "should return results" do
+		@customer = Customer.where(first_name: "Jane", last_name: "Doe")
+		@result = Customer.search('Jane Doe')
+
+		assert_equal(customer, result)
+	end
 end

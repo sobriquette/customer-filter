@@ -7,6 +7,11 @@ class CustomersController < ApplicationController
   end
 
   def search
+  	if params[:query]
+	  	@customers = Customer.search(params[:query])
+	else
+  		@customers = Customer.all
+  	end
   end
 
   def customer_params
