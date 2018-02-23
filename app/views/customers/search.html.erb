@@ -1,0 +1,19 @@
+<h1>Filter Customers</h1>
+
+<%= form_tag(search_customers_path, method: :get) do %>
+	<%= text_field_tag :query, params[:query] %>
+	<%= submit_tag 'Search', name: nil %>
+<% end %>
+
+<table>
+	<tr>
+		<td>First name</td>
+		<td>Last name</td>
+	</tr>
+	<% @customers.each do |customer| %>
+		<tr>
+			<td><%= customer.first_name %></td>
+			<td><%= customer.last_name %></td>
+		</tr>
+	<% end %>
+</table>
