@@ -1,19 +1,26 @@
-<h1>Filter Customers</h1>
-
-<%= form_tag(search_customers_path, method: :get) do %>
-	<%= text_field_tag :query, params[:query] %>
-	<%= submit_tag 'Search', name: nil %>
-<% end %>
-
-<table>
-	<tr>
-		<td>First name</td>
-		<td>Last name</td>
-	</tr>
-	<% @customers.each do |customer| %>
-		<tr>
-			<td><%= customer.first_name %></td>
-			<td><%= customer.last_name %></td>
-		</tr>
+<div class="container">
+	<h1 class="header-search">Search Customers</h1>
+	<%= form_tag(search_customers_path, method: :get, class: 'form-search') do %>
+		<div class="form-inline">
+			<%= text_field_tag :query, params[:query], placeholder: 'Search for a name here', class: 'input-search' %>
+			<%= submit_tag 'Search', class: 'btn btn-primary btn-search', name: nil %>
+		</div>
 	<% end %>
-</table>
+
+	<table class="table" id="table-names">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">First name</th>
+				<th scope="col">Last name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @customers.each do |customer| %>
+				<tr>
+					<td><%= customer.first_name %></td>
+					<td><%= customer.last_name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
