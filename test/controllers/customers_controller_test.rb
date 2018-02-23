@@ -25,9 +25,9 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
 	end
 
 	test "should return results" do
-		@customer = Customer.where(first_name: "Jane", last_name: "Doe")
+		@customer = Customer.where(first_name: "Jane", last_name: "Doe").order('first_name ASC, last_name ASC')
 		@result = Customer.search('Jane Doe')
 
-		assert_equal(customer, result)
+		assert_equal(@customer, @result)
 	end
 end
